@@ -1,6 +1,7 @@
 
 const divContainer = document.querySelector('.container-divs')
 let button = document.querySelector('button');
+let sizeGrid = 25;
 
 const createGrid = (size) => {
     let row;
@@ -45,3 +46,17 @@ function adjustColor(cell) {
         cell.target.style.opacity = value.toString();
     };
 };
+const messageAlert = () => {
+    sizeGrid = prompt('Por favor digite la cantidad de cuadros que desea.'); 
+    //Validamos que sea number
+    let newSize = Number(sizeGrid); 
+    if (isNaN(newSize)) { 
+        alert("Ingrese un número válido"); 
+        return; 
+    }
+
+    divContainer.innerHTML = ""; // limpiar la grilla anterior 
+    createGrid(Number(sizeGrid)); // crear la nueva grilla
+}
+
+button.addEventListener('click', messageAlert);
